@@ -14,7 +14,126 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      artistas: {
+        Row: {
+          autoidentificacion: string | null
+          ci: string | null
+          created_at: string
+          disciplinas: string[]
+          email: string
+          estado: string
+          id: string
+          nombre: string
+          portafolio_urls: string[] | null
+          provincia: string
+          rpa_code: string
+          telefono: string | null
+          tipo_agente: string
+          trayectoria: string | null
+        }
+        Insert: {
+          autoidentificacion?: string | null
+          ci?: string | null
+          created_at?: string
+          disciplinas?: string[]
+          email: string
+          estado?: string
+          id?: string
+          nombre: string
+          portafolio_urls?: string[] | null
+          provincia: string
+          rpa_code: string
+          telefono?: string | null
+          tipo_agente: string
+          trayectoria?: string | null
+        }
+        Update: {
+          autoidentificacion?: string | null
+          ci?: string | null
+          created_at?: string
+          disciplinas?: string[]
+          email?: string
+          estado?: string
+          id?: string
+          nombre?: string
+          portafolio_urls?: string[] | null
+          provincia?: string
+          rpa_code?: string
+          telefono?: string | null
+          tipo_agente?: string
+          trayectoria?: string | null
+        }
+        Relationships: []
+      }
+      convocatorias: {
+        Row: {
+          activa: boolean
+          categoria: string
+          created_at: string
+          deadline: string | null
+          descripcion: string | null
+          enlace: string | null
+          entidad: string
+          id: string
+          monto: string | null
+          titulo: string
+        }
+        Insert: {
+          activa?: boolean
+          categoria: string
+          created_at?: string
+          deadline?: string | null
+          descripcion?: string | null
+          enlace?: string | null
+          entidad: string
+          id?: string
+          monto?: string | null
+          titulo: string
+        }
+        Update: {
+          activa?: boolean
+          categoria?: string
+          created_at?: string
+          deadline?: string | null
+          descripcion?: string | null
+          enlace?: string | null
+          entidad?: string
+          id?: string
+          monto?: string | null
+          titulo?: string
+        }
+        Relationships: []
+      }
+      propuestas_mesa: {
+        Row: {
+          aprobada: boolean
+          autor: string
+          contenido: string
+          created_at: string
+          id: string
+          mesa_slug: string
+          provincia: string | null
+        }
+        Insert: {
+          aprobada?: boolean
+          autor: string
+          contenido: string
+          created_at?: string
+          id?: string
+          mesa_slug: string
+          provincia?: string | null
+        }
+        Update: {
+          aprobada?: boolean
+          autor?: string
+          contenido?: string
+          created_at?: string
+          id?: string
+          mesa_slug?: string
+          provincia?: string | null
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
