@@ -9,10 +9,34 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as ObservatorioRouteImport } from './routes/observatorio'
+import { Route as NormativaRouteImport } from './routes/normativa'
+import { Route as ConvocatoriasRouteImport } from './routes/convocatorias'
+import { Route as AgendaRouteImport } from './routes/agenda'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as MesasIndexRouteImport } from './routes/mesas.index'
 import { Route as MesasSlugRouteImport } from './routes/mesas.$slug'
 
+const ObservatorioRoute = ObservatorioRouteImport.update({
+  id: '/observatorio',
+  path: '/observatorio',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const NormativaRoute = NormativaRouteImport.update({
+  id: '/normativa',
+  path: '/normativa',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ConvocatoriasRoute = ConvocatoriasRouteImport.update({
+  id: '/convocatorias',
+  path: '/convocatorias',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AgendaRoute = AgendaRouteImport.update({
+  id: '/agenda',
+  path: '/agenda',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -31,36 +55,102 @@ const MesasSlugRoute = MesasSlugRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/agenda': typeof AgendaRoute
+  '/convocatorias': typeof ConvocatoriasRoute
+  '/normativa': typeof NormativaRoute
+  '/observatorio': typeof ObservatorioRoute
   '/mesas/$slug': typeof MesasSlugRoute
   '/mesas/': typeof MesasIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/agenda': typeof AgendaRoute
+  '/convocatorias': typeof ConvocatoriasRoute
+  '/normativa': typeof NormativaRoute
+  '/observatorio': typeof ObservatorioRoute
   '/mesas/$slug': typeof MesasSlugRoute
   '/mesas': typeof MesasIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/agenda': typeof AgendaRoute
+  '/convocatorias': typeof ConvocatoriasRoute
+  '/normativa': typeof NormativaRoute
+  '/observatorio': typeof ObservatorioRoute
   '/mesas/$slug': typeof MesasSlugRoute
   '/mesas/': typeof MesasIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/mesas/$slug' | '/mesas/'
+  fullPaths:
+    | '/'
+    | '/agenda'
+    | '/convocatorias'
+    | '/normativa'
+    | '/observatorio'
+    | '/mesas/$slug'
+    | '/mesas/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/mesas/$slug' | '/mesas'
-  id: '__root__' | '/' | '/mesas/$slug' | '/mesas/'
+  to:
+    | '/'
+    | '/agenda'
+    | '/convocatorias'
+    | '/normativa'
+    | '/observatorio'
+    | '/mesas/$slug'
+    | '/mesas'
+  id:
+    | '__root__'
+    | '/'
+    | '/agenda'
+    | '/convocatorias'
+    | '/normativa'
+    | '/observatorio'
+    | '/mesas/$slug'
+    | '/mesas/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AgendaRoute: typeof AgendaRoute
+  ConvocatoriasRoute: typeof ConvocatoriasRoute
+  NormativaRoute: typeof NormativaRoute
+  ObservatorioRoute: typeof ObservatorioRoute
   MesasSlugRoute: typeof MesasSlugRoute
   MesasIndexRoute: typeof MesasIndexRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/observatorio': {
+      id: '/observatorio'
+      path: '/observatorio'
+      fullPath: '/observatorio'
+      preLoaderRoute: typeof ObservatorioRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/normativa': {
+      id: '/normativa'
+      path: '/normativa'
+      fullPath: '/normativa'
+      preLoaderRoute: typeof NormativaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/convocatorias': {
+      id: '/convocatorias'
+      path: '/convocatorias'
+      fullPath: '/convocatorias'
+      preLoaderRoute: typeof ConvocatoriasRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/agenda': {
+      id: '/agenda'
+      path: '/agenda'
+      fullPath: '/agenda'
+      preLoaderRoute: typeof AgendaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -87,19 +177,13 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AgendaRoute: AgendaRoute,
+  ConvocatoriasRoute: ConvocatoriasRoute,
+  NormativaRoute: NormativaRoute,
+  ObservatorioRoute: ObservatorioRoute,
   MesasSlugRoute: MesasSlugRoute,
   MesasIndexRoute: MesasIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { startInstance } from './start.ts'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-    config: Awaited<ReturnType<typeof startInstance.getOptions>>
-  }
-}
