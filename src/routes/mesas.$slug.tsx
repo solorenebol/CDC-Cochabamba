@@ -80,7 +80,7 @@ function MesaDetail() {
             <div>
               <h2 className="font-display text-2xl font-medium mb-4">Ejes temáticos</h2>
               <ul className="grid sm:grid-cols-2 gap-3">
-                {mesa.ejes.map(e => (
+                {mesa.ejes.map((e: string) => (
                   <li key={e} className="bg-secondary rounded-lg p-4 text-sm">{e}</li>
                 ))}
               </ul>
