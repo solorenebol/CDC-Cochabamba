@@ -30,6 +30,7 @@ export type Database = {
           telefono: string | null
           tipo_agente: string
           trayectoria: string | null
+          user_id: string | null
         }
         Insert: {
           autoidentificacion?: string | null
@@ -46,6 +47,7 @@ export type Database = {
           telefono?: string | null
           tipo_agente: string
           trayectoria?: string | null
+          user_id?: string | null
         }
         Update: {
           autoidentificacion?: string | null
@@ -62,6 +64,7 @@ export type Database = {
           telefono?: string | null
           tipo_agente?: string
           trayectoria?: string | null
+          user_id?: string | null
         }
         Relationships: []
       }
@@ -113,6 +116,7 @@ export type Database = {
           id: string
           mesa_slug: string
           provincia: string | null
+          user_id: string | null
         }
         Insert: {
           aprobada?: boolean
@@ -122,6 +126,7 @@ export type Database = {
           id?: string
           mesa_slug: string
           provincia?: string | null
+          user_id?: string | null
         }
         Update: {
           aprobada?: boolean
@@ -131,12 +136,54 @@ export type Database = {
           id?: string
           mesa_slug?: string
           provincia?: string | null
+          user_id?: string | null
         }
         Relationships: []
       }
     }
     Views: {
-      [_ in never]: never
+      artistas_directorio: {
+        Row: {
+          autoidentificacion: string | null
+          created_at: string | null
+          disciplinas: string[] | null
+          estado: string | null
+          id: string | null
+          nombre: string | null
+          portafolio_urls: string[] | null
+          provincia: string | null
+          rpa_code: string | null
+          tipo_agente: string | null
+          trayectoria: string | null
+        }
+        Insert: {
+          autoidentificacion?: string | null
+          created_at?: string | null
+          disciplinas?: string[] | null
+          estado?: string | null
+          id?: string | null
+          nombre?: string | null
+          portafolio_urls?: string[] | null
+          provincia?: string | null
+          rpa_code?: string | null
+          tipo_agente?: string | null
+          trayectoria?: string | null
+        }
+        Update: {
+          autoidentificacion?: string | null
+          created_at?: string | null
+          disciplinas?: string[] | null
+          estado?: string | null
+          id?: string | null
+          nombre?: string | null
+          portafolio_urls?: string[] | null
+          provincia?: string | null
+          rpa_code?: string | null
+          tipo_agente?: string | null
+          trayectoria?: string | null
+        }
+        Relationships: []
+      }
     }
     Functions: {
       [_ in never]: never
