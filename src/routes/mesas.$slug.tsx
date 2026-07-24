@@ -47,17 +47,16 @@ function MesaDetail() {
       return;
     }
     setSending(true);
-    const { data, error } = await supabase.from("propuestas_mesa").insert({
+    const { error } = await supabase.from("propuestas_mesa").insert({
       mesa_slug: mesa.slug,
       autor: form.autor.trim().slice(0, 80),
       provincia: form.provincia.trim().slice(0, 60) || null,
       contenido: form.contenido.trim().slice(0, 1000),
-    }).select().single();
+    });
     setSending(false);
     if (error) { setOk("No pudimos enviar tu propuesta. Intenta de nuevo."); return; }
-    setOk("¡Gracias! Tu propuesta fue registrada.");
+    setOk("¡Gracias! Tu propuesta fue recibida y aparecerá tras la moderación.");
     setForm({ autor: "", provincia: "", contenido: "" });
-    if (data) setPropuestas(p => [data as Propuesta, ...p]);
   }
 
   return (
