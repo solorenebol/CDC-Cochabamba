@@ -181,6 +181,29 @@ function Home() {
         </div>
       </section>
 
+      {/* Sobre el Consejo */}
+      <section className="py-24 border-t border-border/60">
+        <div className="container-cdcc grid md:grid-cols-12 gap-12 items-center">
+          <div className="md:col-span-5 flex justify-center">
+            <img src={logoCdcc.url} alt="Logo CDCC Cochabamba" className="w-64 md:w-80 h-auto" width={512} height={512} />
+          </div>
+          <div className="md:col-span-7">
+            <span className="text-[11px] font-semibold uppercase tracking-[0.25em] text-chicha">Quiénes somos</span>
+            <h2 className="font-display text-3xl md:text-4xl font-medium tracking-tight mt-2 mb-5">
+              Un consejo que teje identidad, comunidad y política pública cultural.
+            </h2>
+            <p className="text-muted-foreground text-lg leading-relaxed mb-6 max-w-[52ch]">
+              El CDCC articula a los diversos actores culturales del departamento para construir, junto al Estado,
+              las políticas públicas culturales del Cochabamba plurinacional. Conoce a nuestra directiva, la filosofía
+              institucional y el marco normativo que nos sostiene.
+            </p>
+            <Link to="/consejo" className="inline-flex bg-ink text-cream px-6 py-3 rounded-full text-sm font-semibold hover:bg-ink-2 transition-colors">
+              Conoce al Consejo
+            </Link>
+          </div>
+        </div>
+      </section>
+
       {/* Observatorio CTA */}
       <section className="py-20">
         <div className="container-cdcc">
