@@ -168,8 +168,8 @@ function Footer() {
       <div className="container-cdcc">
         <div className="grid gap-10 md:grid-cols-4">
           <div className="md:col-span-2 max-w-sm">
-            <div className="flex items-center gap-2 mb-4">
-              <span className="grid h-8 w-8 place-items-center rounded-full bg-chicha text-cream font-display font-bold text-sm">C</span>
+            <div className="flex items-center gap-2.5 mb-4">
+              <img src={logoCdcc.url} alt="Logo CDCC Cochabamba" className="h-9 w-9 rounded-full object-cover" width={72} height={72} />
               <span className="font-display text-lg font-semibold text-cream">CDCC Cochabamba</span>
             </div>
             <p className="text-sm leading-relaxed mb-6">
