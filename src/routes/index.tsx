@@ -1,6 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import aguayoHero from "@/assets/aguayo-hero.jpg";
 import mapaProvincias from "@/assets/mapa-provincias.jpg";
+import logoCdcc from "@/assets/logo_cdcc.jpg.asset.json";
 import { MESAS, AGENDA, PROVINCIAS, RUTA_MANDATO } from "@/lib/cdcc-data";
 
 export const Route = createFileRoute("/")({
