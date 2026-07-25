@@ -9,6 +9,7 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as RegistroRouteImport } from './routes/registro'
 import { Route as ObservatorioRouteImport } from './routes/observatorio'
 import { Route as NormativaRouteImport } from './routes/normativa'
 import { Route as ConvocatoriasRouteImport } from './routes/convocatorias'
@@ -17,6 +18,11 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as MesasIndexRouteImport } from './routes/mesas.index'
 import { Route as MesasSlugRouteImport } from './routes/mesas.$slug'
 
+const RegistroRoute = RegistroRouteImport.update({
+  id: '/registro',
+  path: '/registro',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ObservatorioRoute = ObservatorioRouteImport.update({
   id: '/observatorio',
   path: '/observatorio',
@@ -59,6 +65,7 @@ export interface FileRoutesByFullPath {
   '/convocatorias': typeof ConvocatoriasRoute
   '/normativa': typeof NormativaRoute
   '/observatorio': typeof ObservatorioRoute
+  '/registro': typeof RegistroRoute
   '/mesas/$slug': typeof MesasSlugRoute
   '/mesas/': typeof MesasIndexRoute
 }
@@ -68,6 +75,7 @@ export interface FileRoutesByTo {
   '/convocatorias': typeof ConvocatoriasRoute
   '/normativa': typeof NormativaRoute
   '/observatorio': typeof ObservatorioRoute
+  '/registro': typeof RegistroRoute
   '/mesas/$slug': typeof MesasSlugRoute
   '/mesas': typeof MesasIndexRoute
 }
@@ -78,6 +86,7 @@ export interface FileRoutesById {
   '/convocatorias': typeof ConvocatoriasRoute
   '/normativa': typeof NormativaRoute
   '/observatorio': typeof ObservatorioRoute
+  '/registro': typeof RegistroRoute
   '/mesas/$slug': typeof MesasSlugRoute
   '/mesas/': typeof MesasIndexRoute
 }
@@ -89,6 +98,7 @@ export interface FileRouteTypes {
     | '/convocatorias'
     | '/normativa'
     | '/observatorio'
+    | '/registro'
     | '/mesas/$slug'
     | '/mesas/'
   fileRoutesByTo: FileRoutesByTo
@@ -98,6 +108,7 @@ export interface FileRouteTypes {
     | '/convocatorias'
     | '/normativa'
     | '/observatorio'
+    | '/registro'
     | '/mesas/$slug'
     | '/mesas'
   id:
@@ -107,6 +118,7 @@ export interface FileRouteTypes {
     | '/convocatorias'
     | '/normativa'
     | '/observatorio'
+    | '/registro'
     | '/mesas/$slug'
     | '/mesas/'
   fileRoutesById: FileRoutesById
@@ -117,12 +129,20 @@ export interface RootRouteChildren {
   ConvocatoriasRoute: typeof ConvocatoriasRoute
   NormativaRoute: typeof NormativaRoute
   ObservatorioRoute: typeof ObservatorioRoute
+  RegistroRoute: typeof RegistroRoute
   MesasSlugRoute: typeof MesasSlugRoute
   MesasIndexRoute: typeof MesasIndexRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/registro': {
+      id: '/registro'
+      path: '/registro'
+      fullPath: '/registro'
+      preLoaderRoute: typeof RegistroRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/observatorio': {
       id: '/observatorio'
       path: '/observatorio'
@@ -181,19 +201,10 @@ const rootRouteChildren: RootRouteChildren = {
   ConvocatoriasRoute: ConvocatoriasRoute,
   NormativaRoute: NormativaRoute,
   ObservatorioRoute: ObservatorioRoute,
+  RegistroRoute: RegistroRoute,
   MesasSlugRoute: MesasSlugRoute,
   MesasIndexRoute: MesasIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { startInstance } from './start.ts'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-    config: Awaited<ReturnType<typeof startInstance.getOptions>>
-  }
-}
