@@ -17,9 +17,12 @@ function Home() {
         <div className="container-cdcc relative py-20 md:py-32">
           <div className="grid md:grid-cols-12 gap-12 items-center">
             <div className="md:col-span-7">
-              <span className="inline-block text-[11px] font-semibold uppercase tracking-[0.25em] text-chicha mb-6">
-                Portal Cívico-Cultural Plurinacional
-              </span>
+              <div className="flex items-center gap-3 mb-6">
+                <img src={logoCdcc.url} alt="Logo CDCC Cochabamba" className="h-14 w-14 rounded-full object-cover ring-1 ring-black/10" width={112} height={112} />
+                <span className="inline-block text-[11px] font-semibold uppercase tracking-[0.25em] text-chicha">
+                  Portal Cívico-Cultural Plurinacional
+                </span>
+              </div>
               <h1 className="font-display text-4xl md:text-6xl lg:text-7xl font-medium leading-[0.98] tracking-tight text-balance mb-8">
                 El tejido vivo de las culturas de Cochabamba.
               </h1>
