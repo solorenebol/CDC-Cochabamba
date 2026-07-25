@@ -13,6 +13,7 @@ import { Route as RegistroRouteImport } from './routes/registro'
 import { Route as ObservatorioRouteImport } from './routes/observatorio'
 import { Route as NormativaRouteImport } from './routes/normativa'
 import { Route as ConvocatoriasRouteImport } from './routes/convocatorias'
+import { Route as ConsejoRouteImport } from './routes/consejo'
 import { Route as AgendaRouteImport } from './routes/agenda'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as MesasIndexRouteImport } from './routes/mesas.index'
@@ -36,6 +37,11 @@ const NormativaRoute = NormativaRouteImport.update({
 const ConvocatoriasRoute = ConvocatoriasRouteImport.update({
   id: '/convocatorias',
   path: '/convocatorias',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ConsejoRoute = ConsejoRouteImport.update({
+  id: '/consejo',
+  path: '/consejo',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AgendaRoute = AgendaRouteImport.update({
@@ -62,6 +68,7 @@ const MesasSlugRoute = MesasSlugRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/agenda': typeof AgendaRoute
+  '/consejo': typeof ConsejoRoute
   '/convocatorias': typeof ConvocatoriasRoute
   '/normativa': typeof NormativaRoute
   '/observatorio': typeof ObservatorioRoute
@@ -72,6 +79,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/agenda': typeof AgendaRoute
+  '/consejo': typeof ConsejoRoute
   '/convocatorias': typeof ConvocatoriasRoute
   '/normativa': typeof NormativaRoute
   '/observatorio': typeof ObservatorioRoute
@@ -83,6 +91,7 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/agenda': typeof AgendaRoute
+  '/consejo': typeof ConsejoRoute
   '/convocatorias': typeof ConvocatoriasRoute
   '/normativa': typeof NormativaRoute
   '/observatorio': typeof ObservatorioRoute
@@ -95,6 +104,7 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/agenda'
+    | '/consejo'
     | '/convocatorias'
     | '/normativa'
     | '/observatorio'
@@ -105,6 +115,7 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/agenda'
+    | '/consejo'
     | '/convocatorias'
     | '/normativa'
     | '/observatorio'
@@ -115,6 +126,7 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/agenda'
+    | '/consejo'
     | '/convocatorias'
     | '/normativa'
     | '/observatorio'
@@ -126,6 +138,7 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AgendaRoute: typeof AgendaRoute
+  ConsejoRoute: typeof ConsejoRoute
   ConvocatoriasRoute: typeof ConvocatoriasRoute
   NormativaRoute: typeof NormativaRoute
   ObservatorioRoute: typeof ObservatorioRoute
@@ -164,6 +177,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ConvocatoriasRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/consejo': {
+      id: '/consejo'
+      path: '/consejo'
+      fullPath: '/consejo'
+      preLoaderRoute: typeof ConsejoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/agenda': {
       id: '/agenda'
       path: '/agenda'
@@ -198,6 +218,7 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AgendaRoute: AgendaRoute,
+  ConsejoRoute: ConsejoRoute,
   ConvocatoriasRoute: ConvocatoriasRoute,
   NormativaRoute: NormativaRoute,
   ObservatorioRoute: ObservatorioRoute,
