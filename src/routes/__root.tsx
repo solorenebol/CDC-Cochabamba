@@ -11,6 +11,7 @@ import { useEffect, useState, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
+import logoCdcc from "@/assets/logo_cdcc.jpg.asset.json";
 
 function NotFoundComponent() {
   return (
