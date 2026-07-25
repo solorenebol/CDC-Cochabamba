@@ -118,8 +118,8 @@ function Nav() {
   return (
     <nav className="sticky top-0 z-50 border-b border-border/60 bg-background/85 backdrop-blur-md">
       <div className="container-cdcc flex h-16 items-center justify-between gap-4">
-        <Link to="/" className="flex items-center gap-2 shrink-0">
-          <span className="grid h-8 w-8 place-items-center rounded-full bg-chicha text-cream font-display font-bold text-sm">C</span>
+        <Link to="/" className="flex items-center gap-2.5 shrink-0">
+          <img src={logoCdcc.url} alt="Logo CDCC Cochabamba" className="h-9 w-9 rounded-full object-cover ring-1 ring-black/5" width={72} height={72} />
           <span className="font-display text-lg font-semibold tracking-tight">
             CDCC <span className="text-chicha">Cochabamba</span>
           </span>
